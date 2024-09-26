@@ -102,3 +102,5 @@ should be **center aligned**.
 **Question 9** -- Specify a **figure caption** for the boxplots (using a
 code-chunk option).
 
+Done!
+
