@@ -1,13 +1,19 @@
 ---
 title: "Lab 1: Introduction to Quarto"
 author: "Parker Mascott"
-date: "September 26th, 2004"
-format: html
+date: "09/29/2024"
+format:
+  html:
+    code-fold: true
+    toc-title: "Table Of Contents"
+    toc: true
+    toc-expand: 2
 editor: source
 embed-resources: true
 execute:
-  echo: false
-  eval: false
+  echo: true
+  error: true
+
 ---
 
 # Part Two: Exploring Quarto Documents
@@ -24,13 +30,9 @@ provides descriptions on the options you can specify in a document's execution.
 options, (1) your source code is always output on the page, and (2) your
 document will render even if there are errors.
 
-## Running the Provided Code
+## Loading and Viewing the Tooth Growth Dataset
 
 ```{r}
-#| eval: false
-#| echo: true
-#| label: practicing-running-code
-
 # Load a dataset into the R Environment.
 data(ToothGrowth)
 
@@ -103,4 +105,27 @@ should be **center aligned**.
 code-chunk option).
 
 Done!
+
+
+## Conducting a t-test for ToothGrowth Dataset (Two Independent Samples)
+
+Null: The treatment mean tooth length for the OJ supplement delivery method is the same as the treatment mean tooth length for the VC supplement delivery method.
+
+Alternative: The treatment mean tooth length for the OJ supplement delivery method is different from the treatment mean tooth length for the VC supplement delivery method.
+
+Assume unequal variances and a two-sided alternative.(var.equal = FALSE, alternative = "two-sided")
+
+**Question 10**
+
+```{r}
+glimpse(ToothGrowth)
+
+t.test(len ~ supp, data = ToothGrowth, var.equal = FALSE, alternative = "two.sided")
+
+```
+**Question 12** Findings
+
+1. Our P-value of 0.06063 is slightly greater than 0.05. This results in us failing to reject the null hypothesis, concluding that there is not enough evidence for the treatment mean tooth length for the OJ supplement delivery method is different from the treatment mean tooth length for the VC supplement delivery method.
+
+2. Our 95% confidence interval is from -0.171 to 7.571. This interval includes 0 which suggests that there might not be a significant difference in mean tooth length across treatments.
 
